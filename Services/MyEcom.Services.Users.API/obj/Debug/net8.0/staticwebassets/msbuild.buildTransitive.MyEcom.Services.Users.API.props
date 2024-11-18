@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\MyEcom.Services.Users.API.props" />
+</Project>
