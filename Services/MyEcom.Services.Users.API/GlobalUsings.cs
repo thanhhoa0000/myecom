@@ -7,4 +7,5 @@ global using AutoMapper;
 global using Carter;
 
 global using MyEcom.Services.Users.API.Models;
+global using MyEcom.Services.Users.API.Models.Dtos;
 global using MyEcom.Services.Users.API.Infrastructure;

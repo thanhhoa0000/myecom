@@ -4,13 +4,19 @@
 		<CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
 		<AspNetVersion>8.0.8</AspNetVersion>
 		<EfVersion>8.0.8</EfVersion>
+		<AspVersioning>8.1.0</AspVersioning>
 	</PropertyGroup>
 	<ItemGroup>
+		<!-- Version together with Asp.Versioning -->
+		<PackageVersion Include="Asp.Versioning.Http" Version="$(AspVersioning)" />
+		<PackageVersion Include="Asp.Versioning.Mvc.ApiExplorer" Version="$(AspVersioning)" />
+		
 		<!-- Version together with ASP.NET -->
 		<PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="$(AspnetVersion)" />
 		<PackageVersion Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="$(AspnetVersion)" />
 		<PackageVersion Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
 		<PackageVersion Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+		
 		<!-- Version togerther with EF Core -->
 		<PackageVersion Include="Microsoft.EntityFrameworkCore" Version="$(EfVersion)" />
 		<PackageVersion Include="Microsoft.EntityFrameworkCore.Abstractions" Version="$(EfVersion)" />
@@ -19,6 +25,7 @@
 		<PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.8" />
 		<PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4" />
 		<PackageVersion Include="Ngpsql" Version="8.0.4" />
+		
 		<!-- Serilog -->
 		<PackageVersion Include="Serilog.AspNetCore" Version="8.0.3" />
 		<PackageVersion Include="Serilog.Enrichers.Environment" Version="3.0.1" />
@@ -26,8 +33,10 @@
 		<PackageVersion Include="Serilog.Sinks.Console" Version="6.0.0" />
 		<PackageVersion Include="Serilog.Sinks.Http" Version="9.0.0" />
 		<PackageVersion Include="Serilog.Sinks.Seq" Version="8.0.0" />
+		
 		<!-- Scaffolding -->
 		<PackageVersion Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="8.0.5" />
+		
 		<!-- Miscellaneous -->
 		<PackageVersion Include="AutoMapper" Version="13.0.1" />
 		<PackageVersion Include="Carter" Version="8.2.1" />

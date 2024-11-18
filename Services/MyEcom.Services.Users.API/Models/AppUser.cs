@@ -9,3 +9,10 @@ public class AppUser : IdentityUser<Guid>
     [Required, MinLength(2), MaxLength(80)]
     public required string LastName { get; set; }
 }
+
+public enum AppRoles
+{
+    Admin,
+    Vendor,
+    Customer
+}
