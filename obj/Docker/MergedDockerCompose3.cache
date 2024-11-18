@@ -1,0 +1,61 @@
+name: dockercompose8495584577524100089
+services:
+  users.api:
+    build:
+      context: D:\Intern_Portfolio\ECommercePlatform\src\MyEcom
+      dockerfile: Services/MyEcom.Services.Users.API/Dockerfile
+    depends_on:
+      users.database:
+        condition: service_started
+        required: true
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_Kestrel__Certificates__Default__Password: BOuXVKh7QeIszbOSrl21JNmXfj28CLsb
+      ASPNETCORE_Kestrel__Certificates__Default__Path: /home/app/.aspnet/https/Users.API.pfx
+      ASPNETCORE_URLS: https://+:5011;http://+:5010
+    image: users.api
+    networks:
+      myecom-net: null
+    ports:
+      - mode: ingress
+        target: 5010
+        published: "5010"
+        protocol: tcp
+      - mode: ingress
+        target: 5011
+        published: "5011"
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: D:\Intern_Portfolio\ECommercePlatform\src\MyEcom\certs\.aspnet\https\Users.API.pfx
+        target: /home/app/.aspnet/https/Users.API.pfx
+        read_only: true
+        bind:
+          create_host_path: true
+  users.database:
+    container_name: users.database
+    environment:
+      PGDATA: /data/postgres
+      POSTGRES_PASSWORD: Myp@55w0rd
+      POSTGRES_USER: thanhhoa
+    image: postgres:16-alpine
+    networks:
+      myecom-net: null
+    ports:
+      - mode: ingress
+        target: 5432
+        published: "54321"
+        protocol: tcp
+    restart: unless-stopped
+    volumes:
+      - type: volume
+        source: users_postgres
+        target: /data/postgres
+        volume: {}
+networks:
+  myecom-net:
+    name: dockercompose8495584577524100089_myecom-net
+    driver: bridge
+volumes:
+  users_postgres:
+    name: dockercompose8495584577524100089_users_postgres

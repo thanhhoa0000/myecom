@@ -1,0 +1,12 @@
+services:
+  users.api:
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      ASPNETCORE_URLS: "https://+:5011;http://+:5010"
+      ASPNETCORE_Kestrel__Certificates__Default__Password: ${HTTPS_DEV_CERTS_PASSWORD}
+      ASPNETCORE_Kestrel__Certificates__Default__Path: /home/app/.aspnet/https/Users.API.pfx
+    ports:
+      - "5010:5010"
+      - "5011:5011"
+    volumes:
+      - ./certs/.aspnet/https/Users.API.pfx:/home/app/.aspnet/https/Users.API.pfx:ro

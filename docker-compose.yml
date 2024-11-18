@@ -1,0 +1,36 @@
+services:
+  users.api:
+    image: users.api
+    build:
+      context: .
+      dockerfile: Services/MyEcom.Services.Users.API/Dockerfile
+    depends_on:
+      - users.database
+    networks:
+      myecom-net:
+    ports:
+      - "5010:5010"
+      - "5011:5011"
+        
+  users.database:
+    image: postgres:16-alpine
+    container_name: users.database
+    environment:
+      POSTGRES_USER: ${POSTGRES_USERNAME}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      PGDATA: /data/postgres
+    volumes:
+      - users_postgres:/data/postgres
+    ports:
+      - "54321:5432"
+    networks:
+      myecom-net:
+    restart: unless-stopped
+
+volumes:
+  users_postgres:
+
+networks:
+  myecom-net:
+    driver: bridge
+    

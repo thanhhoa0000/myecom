@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35424.110 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{85BEC71A-813F-4AD2-A2CE-FFF49F4583EF}"
+	ProjectSection(SolutionItems) = preProject
+		.env = .env
+		Directory.Build.props = Directory.Build.props
+		Directory.Packages.props = Directory.Packages.props
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{C20B6AA2-982F-4504-9128-75FA8C153764}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyEcom.Services.Users.API", "Services\MyEcom.Services.Users.API\MyEcom.Services.Users.API.csproj", "{E78386E9-B39C-40D8-B5F5-1CE2E26A5482}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{B5F59058-BFFD-4921-B434-EFF33F02DE3C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{B9F15894-FECD-4A27-BF03-B84CBFBFB87F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E78386E9-B39C-40D8-B5F5-1CE2E26A5482}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E78386E9-B39C-40D8-B5F5-1CE2E26A5482}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E78386E9-B39C-40D8-B5F5-1CE2E26A5482}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E78386E9-B39C-40D8-B5F5-1CE2E26A5482}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5F59058-BFFD-4921-B434-EFF33F02DE3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5F59058-BFFD-4921-B434-EFF33F02DE3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5F59058-BFFD-4921-B434-EFF33F02DE3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5F59058-BFFD-4921-B434-EFF33F02DE3C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E78386E9-B39C-40D8-B5F5-1CE2E26A5482} = {C20B6AA2-982F-4504-9128-75FA8C153764}
+		{B5F59058-BFFD-4921-B434-EFF33F02DE3C} = {B9F15894-FECD-4A27-BF03-B84CBFBFB87F}
+	EndGlobalSection
+EndGlobal
