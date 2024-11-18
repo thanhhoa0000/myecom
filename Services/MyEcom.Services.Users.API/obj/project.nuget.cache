@@ -1,9 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "DhKfoa1tZb8=",
+  "dgSpecHash": "NtRXITAJx/U=",
   "success": true,
   "projectFilePath": "D:\\Intern_Portfolio\\ECommercePlatform\\src\\MyEcom\\Services\\MyEcom.Services.Users.API\\MyEcom.Services.Users.API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\hoath\\.nuget\\packages\\asp.versioning.abstractions\\8.1.0\\asp.versioning.abstractions.8.1.0.nupkg.sha512",
+    "C:\\Users\\hoath\\.nuget\\packages\\asp.versioning.http\\8.1.0\\asp.versioning.http.8.1.0.nupkg.sha512",
+    "C:\\Users\\hoath\\.nuget\\packages\\asp.versioning.mvc\\8.1.0\\asp.versioning.mvc.8.1.0.nupkg.sha512",
+    "C:\\Users\\hoath\\.nuget\\packages\\asp.versioning.mvc.apiexplorer\\8.1.0\\asp.versioning.mvc.apiexplorer.8.1.0.nupkg.sha512",
     "C:\\Users\\hoath\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
     "C:\\Users\\hoath\\.nuget\\packages\\carter\\8.2.1\\carter.8.2.1.nupkg.sha512",
     "C:\\Users\\hoath\\.nuget\\packages\\carter.analyzers\\8.2.1\\carter.analyzers.8.2.1.nupkg.sha512",

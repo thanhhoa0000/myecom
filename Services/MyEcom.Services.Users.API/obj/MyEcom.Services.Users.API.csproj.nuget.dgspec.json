@@ -52,6 +52,16 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Asp.Versioning.Http": {
+              "target": "Package",
+              "version": "[8.1.0, )",
+              "versionCentrallyManaged": true
+            },
+            "Asp.Versioning.Mvc.ApiExplorer": {
+              "target": "Package",
+              "version": "[8.1.0, )",
+              "versionCentrallyManaged": true
+            },
             "AutoMapper": {
               "target": "Package",
               "version": "[13.0.1, )",
@@ -118,6 +128,8 @@
             }
           },
           "centralPackageVersions": {
+            "Asp.Versioning.Http": "8.1.0",
+            "Asp.Versioning.Mvc.ApiExplorer": "8.1.0",
             "AutoMapper": "13.0.1",
             "Carter": "8.2.1",
             "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.8",
