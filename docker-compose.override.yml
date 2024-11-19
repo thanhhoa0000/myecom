@@ -10,3 +10,16 @@ services:
       - "5011:5011"
     volumes:
       - ./certs/.aspnet/https/Users.API.pfx:/home/app/.aspnet/https/Users.API.pfx:ro
+  
+  identity.api:
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      ASPNETCORE_URLS: "https://+:5001;http://+:5000"
+      ASPNETCORE_Kestrel__Certificates__Default__Password: ${HTTPS_DEV_CERTS_PASSWORD}
+      ASPNETCORE_Kestrel__Certificates__Default__Path: /home/app/.aspnet/https/Identity.API.pfx
+    ports:
+      - "5000:5000"
+      - "5001:5001"
+    volumes:
+      - ./certs/.aspnet/https/Identity.API.pfx:/home/app/.aspnet/https/Identity.API.pfx:ro
+    

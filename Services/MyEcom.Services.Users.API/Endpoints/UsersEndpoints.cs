@@ -31,7 +31,7 @@ public class UsersEndpoints : ICarterModule
     {
         try
         {
-            var context = dbContextFactory.CreateDbContext();
+            await using var context = await dbContextFactory.CreateDbContextAsync();
             var users = await context.AppUsers.ToListAsync();
 
             return TypedResults.Ok(mapper.Map<IEnumerable<AppUserDto>>(users));
@@ -49,7 +49,7 @@ public class UsersEndpoints : ICarterModule
     {
         try
         {
-            var context = dbContextFactory.CreateDbContext();
+            await using var context = await dbContextFactory.CreateDbContextAsync();
             var user = await context.AppUsers.FirstOrDefaultAsync(u => u.Id == id);
 
             if (user is null)
@@ -72,7 +72,7 @@ public class UsersEndpoints : ICarterModule
     {
         try
         {
-            var context = dbContextFactory.CreateDbContext();
+            await using var context = await dbContextFactory.CreateDbContextAsync();
             var user = mapper.Map<AppUser>(userDto);
 
             context.AppUsers.Add(user);
@@ -93,7 +93,7 @@ public class UsersEndpoints : ICarterModule
     {
         try
         {
-            var context = dbContextFactory.CreateDbContext();
+            await using var context = await dbContextFactory.CreateDbContextAsync();
             var user = await context.AppUsers.FirstOrDefaultAsync(u => u.Id == userDto.Id);
 
             if (user is null)
@@ -121,7 +121,7 @@ public class UsersEndpoints : ICarterModule
     {
         try
         {
-            var context = dbContextFactory.CreateDbContext();
+            await using var context = await dbContextFactory.CreateDbContextAsync();
             var user = await context.AppUsers.FirstOrDefaultAsync(u => u.Id == id);
 
             if (user is null)

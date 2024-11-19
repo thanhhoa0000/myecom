@@ -11,6 +11,19 @@ services:
     ports:
       - "5010:5010"
       - "5011:5011"
+  
+  identity.api:
+    image: identity.api
+    build:
+      context: .
+      dockerfile: Services/MyEcom.Services.Identity.API/Dockerfile
+    depends_on:
+      - users.database
+    networks:
+      myecom-net:
+    ports:
+      - "5000:5000"
+      - "5001:5001"
         
   users.database:
     image: postgres:16-alpine

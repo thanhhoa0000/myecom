@@ -133,6 +133,7 @@
             "AutoMapper": "13.0.1",
             "Carter": "8.2.1",
             "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.8",
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "8.0.8",
             "Microsoft.AspNetCore.OpenApi": "8.0.8",
             "Microsoft.EntityFrameworkCore": "8.0.8",
             "Microsoft.EntityFrameworkCore.Abstractions": "8.0.8",
