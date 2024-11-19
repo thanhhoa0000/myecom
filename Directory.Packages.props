@@ -19,6 +19,7 @@
 		
 		<!-- Version togerther with EF Core -->
 		<PackageVersion Include="Microsoft.EntityFrameworkCore" Version="$(EfVersion)" />
+		<PackageVersion Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="$(EfVersion)" />
 		<PackageVersion Include="Microsoft.EntityFrameworkCore.Abstractions" Version="$(EfVersion)" />
 		<PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="$(EfVersion)" />
 		<PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="$(EfVersion)" />
