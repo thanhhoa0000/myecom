@@ -30,8 +30,8 @@ public class IdentityEndpoints : ICarterModule
         IDbContextFactory<AuthContext> dbContextFactory,
         string email,
         string role,
-        UserManager<IdentityUser<Guid>> userManager,
-        RoleManager<IdentityRole> roleManager)
+        [FromServices] UserManager<IdentityUser<Guid>> userManager,
+        [FromServices] RoleManager<IdentityRole<Guid>> roleManager)
     {
         try
         {
@@ -47,7 +47,7 @@ public class IdentityEndpoints : ICarterModule
             {
                 if (!await roleManager.RoleExistsAsync(role))
                 {
-                    await roleManager.CreateAsync(new IdentityRole(role));
+                    await roleManager.CreateAsync(new IdentityRole<Guid>(role));
                     
                 }
 
@@ -72,7 +72,7 @@ public class IdentityEndpoints : ICarterModule
     public static async Task<Results<Ok<LoginResponse>, NotFound<string>, BadRequest<string>>> Login(
         IDbContextFactory<AuthContext> dbContextFactory,
         ITokenProvider tokenProvider,
-        UserManager<IdentityUser<Guid>> userManager,
+        [FromServices] UserManager<IdentityUser<Guid>> userManager,
         [FromBody] LoginRequest request,
         IMapper mapper)
     {
@@ -110,15 +110,35 @@ public class IdentityEndpoints : ICarterModule
         }
     }
     
-    public static async Task<Results<Created, BadRequest<string>>> Register(
+    public static async Task<Results<Ok<AppUserDto>, BadRequest<string>>> Register(
         IDbContextFactory<AuthContext> dbContextFactory,
-        UserManager<IdentityUser<Guid>> userManager,
-        [FromBody] RegisterRequest request,
+        [FromServices] UserManager<IdentityUser<Guid>> userManager,
+        [FromBody] RegistrationRequest request,
         IMapper mapper)
     {
         try
         {
             await using var context = await dbContextFactory.CreateDbContextAsync();
+
+            var newUser = new AppUser()
+            {
+                UserName = request.UserName,
+                Email = request.Email,
+                NormalizedEmail = request.Email.ToUpper(),
+                PhoneNumber = request.PhoneNumber,
+                FirstName = request.FirstName,
+                LastName = request.LastName,
+            };
+            
+            var createUserResult = await userManager.CreateAsync(newUser, request.Password);
+
+            if (createUserResult.Succeeded)
+            {
+                return TypedResults.Ok(mapper.Map<AppUserDto>(newUser));
+            }
+            
+            return TypedResults.BadRequest(
+                $"Error encountered during registration: {createUserResult.Errors.FirstOrDefault()!.Description}");
         }
         catch (Exception ex)
         {

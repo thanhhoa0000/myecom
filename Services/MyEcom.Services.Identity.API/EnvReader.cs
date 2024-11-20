@@ -9,7 +9,7 @@ public static class EnvReader
 
         foreach (var line in File.ReadAllLines(filePath))
         {
-            if (string.IsNullOrWhiteSpace(line) || line.StartsWith("#"))
+            if (string.IsNullOrWhiteSpace(line) || line.StartsWith('#'))
                 continue;
             
             var parts = line.Split("=");
