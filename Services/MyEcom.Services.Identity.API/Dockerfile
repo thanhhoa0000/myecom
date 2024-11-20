@@ -10,6 +10,9 @@ EXPOSE 5001
 FROM mcr.microsoft.com/dotnet/sdk:8.0-alpine AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
+COPY ["Directory.Packages.props", "."]
+COPY ["Directory.Build.props", "."]
+COPY [".env", "."]
 COPY ["Services/MyEcom.Services.Identity.API/MyEcom.Services.Identity.API.csproj", "Services/MyEcom.Services.Identity.API/"]
 RUN dotnet restore "Services/MyEcom.Services.Identity.API/MyEcom.Services.Identity.API.csproj"
 COPY . .
@@ -22,5 +25,6 @@ RUN dotnet publish "MyEcom.Services.Identity.API.csproj" -c $BUILD_CONFIGURATION
 
 FROM base AS final
 WORKDIR /app
+COPY [".env", "/app/.env"]
 COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "MyEcom.Services.Identity.API.dll"]

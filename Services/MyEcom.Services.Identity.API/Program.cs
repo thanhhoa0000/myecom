@@ -1,15 +1,20 @@
+using System.Configuration;
 using Asp.Versioning;
 using MyEcom.Services.Identity.API;
 
-var envPath = "../../.env";
-EnvReader.Load(envPath);
-
 var builder = WebApplication.CreateBuilder(args);
+
+var envPath = builder.Configuration.GetValue<string>("EnvFilePath");
+EnvReader.Load(envPath);
 
 // Add services to the container.
 var connectionString = builder.Configuration.GetConnectionString("UsersDb");
 builder.Services.AddDbContextFactory<AuthContext>(
     options => options.UseNpgsql(connectionString));
+
+builder.Services.AddIdentity<AppUser, IdentityRole<Guid>>()
+    .AddEntityFrameworkStores<AuthContext>()
+    .AddDefaultTokenProviders();
 
 builder.Services.AddApiVersioning(options =>
     {

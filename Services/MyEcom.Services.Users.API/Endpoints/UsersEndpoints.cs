@@ -78,7 +78,7 @@ public class UsersEndpoints : ICarterModule
             context.AppUsers.Add(user);
             await context.SaveChangesAsync();
 
-            return TypedResults.Created($"/users/{userDto.Id}");
+            return TypedResults.Created($"/users/{user.Id}");
         }
         catch (Exception ex)
         {
